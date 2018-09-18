@@ -6,8 +6,7 @@
         
         $id = $_SESSION['owner_id'];     
         $owner = new Owner();
-        $user=$owner->getOwner($id);
-        foreach($user as $u){ $oldpass =$u['owner_password'];}
+        $user=$owner->getOwnerById($id);
 
 ?>
 <!DOCTYPE html>
@@ -173,24 +172,24 @@
                                 <div class="col-md-12">
                                     <form action="../controller/Owner/ownerContoller.php" method="post" class="floating-labels" id="form1">
                                     <div class="form-group m-b-40">
-                                            <input hidden name="ownerid" value="<?php echo $u['owner_id']; ?>" type="text" class="form-control" id="input1"><span class="highlight"></span> <span class="bar"></span>
+                                            <input hidden name="ownerid" value="<?php echo $user['owner_id']; ?>" type="text" class="form-control" id="input1"><span class="highlight"></span> <span class="bar"></span>
                                             <label for="input1"></label>
                                     </div>
                                     <div class="form-group m-b-40">
                                             <input type="text" class="form-control" id="input1" name="lastname"><span class="highlight"></span> <span class="bar"></span>
-                                            <label for="input1"><?php echo $u['owner_lastname']; ?></label>
+                                            <label for="input1"><?php echo $user['owner_lastname']; ?></label>
                                     </div>
                                     <div class="form-group m-b-40">
                                             <input type="text" class="form-control" id="input1" name="firstname"><span class="highlight"></span> <span class="bar"></span>
-                                            <label for="input1"><?php echo $u['owner_firstname']; ?></label>
+                                            <label for="input1"><?php echo $user['owner_firstname']; ?></label>
                                     </div>
                                     <div class="form-group m-b-40">
                                             <input type="text" class="form-control" id="input1" name="mi"><span class="highlight"></span> <span class="bar"></span>
-                                            <label for="input1"><?php echo $u['owner_mi']; ?></label>
+                                            <label for="input1"><?php echo $user['owner_mi']; ?></label>
                                     </div>
                                     <div class="form-group m-b-40">
                                             <input type="email" class="form-control" id="input1" name="email"><span class="highlight"></span> <span class="bar"></span>
-                                            <label for="input1"><?php echo $u['owner_username']; ?></label>
+                                            <label for="input1"><?php echo $user['owner_username']; ?></label>
                                     </div>
                                     <div class="form-group m-b-40">
                                             <input name="oldpass" type="password" class="form-control " id="st"><span class="highlight"></span> <span class="bar"></span>
@@ -198,15 +197,15 @@
                                             <label id = "smess" hidden> Not match </label>
                                     </div>
                                     <div class="form-group m-b-40">
-                                            <input name="password" type="password" class="form-control" id="pass1"     ><span class="highlight"></span> <span class="bar"></span>
+                                            <input name="password" type="password" class="form-control" name="password" id="pass1"><span class="highlight"></span> <span class="bar"></span>
                                             <label for="input1">New Password</label>
                                     </div>
                                     <div class="form-group m-b-40">
-                                            <input type="password" class="form-control" id="pass"     ><span class="highlight"></span> <span class="bar"></span>
+                                            <input type="password" class="form-control" id="pass"><span class="highlight"></span> <span class="bar"></span>
                                             <label for="input1">Comfirm Password</label>
                                     </div>
                                     <div class="col-lg-2 col-sm-4 col-xs-12">
-                                        <button class="btn btn-block btn-rounded btn-primary" type="submit" name="update">update</button>
+                                        <input class="btn btn-block btn-rounded btn-primary" type="submit" name="update" value="Update">
                                     </div>
                                     </form>
                                 </div>

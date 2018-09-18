@@ -20,11 +20,11 @@
 
     if(isset($_POST['update']))
     {
-        $id=htmlentities($_POST['diary_id']);
+       
         $date = htmlentities($_POST['date']);
         $label= htmlentities($_POST['label']);
         $status = htmlentities($_POST['status']);
-        $ok = $diary->updateDiary(array($id,$date,$label,$status),$_SESSION['owner_id'],$id);
+        $diary->updateDiary(array($_SESSION['owner_id'],$date,$label,$status),$_GET['id']);
         header("location:../../view/diary.php?Update_Success");
     }
 

@@ -1,11 +1,11 @@
 <?php
-    include '../model/storyModel.php';
-    if($_SESSION){
-        $story = new Story();
-        $stor = $story->getStory($_GET['id']);
+include '../model/storyModel.php';
+if ($_SESSION) {
+    $story = new Story();
+    $stor = $story->getStoryById($_GET['id']);
 // print_r($dia);
-    
-?>
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +52,7 @@
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
                 <div class="user-profile">
                     <div class="dropdown user-pro-body">
-                        <div><img src="components/plugins/img/profilelogo.png" alt="user-img" class="img-circle"></div> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['owner']?><span class="caret"></span></a>
+                        <div><img src="components/plugins/img/profilelogo.png" alt="user-img" class="img-circle"></div> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['owner'] ?><span class="caret"></span></a>
                         <ul class="dropdown-menu animated flipInY">
                             <li><a href="profile.php"><i class="ti-user"></i> My Profile</a></li>
                             <li role="separator" class="divider"></li>
@@ -103,27 +103,22 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="white-box">
-                                <form action="../controller/diary/diaryController.php?id=<?php echo $_GET['id']?>" class="form-horizontal form-bordered" method="post">
+                                <form method="post" action="../controller/Story/storyController.php?id=<?php echo $s['story_id']; ?>">
                                     <div class="form-body">
-                                        <input type="number" name="diary_id" hidden value="<?php echo $_GET['id'];?>">
-                                            <div class="col-md-12">                                            
-                                                <input readOnly class="btn btn-block btn-rounded btn-danger" value="<?php echo $dia['diary_datecreated'];?>" name="date" id="pardate">
-                                            </div> <br/><br/><br><br>
-                                            <div class="floating-labels ">
-                                            <div class="form-group m-b-40">
-                                                <input name="label" type="text" class="form-control" id="titlediary"><span class="highlight"></span> <span class="bar"></span>
-                                                <label for="input1"><?php echo $dia['diary_label'];?></label>
-                                            </div>                                            
-                                            <div class="form-group m-b-40 ">
-                                                <select name="status" value="<?php echo $dia['diary_status'];?>" class="form-control p-0" id="privacy" required>
-                                                    <option value="Active">Active</option>
-                                                    <option value="Forgotten">Forgotten</option>
-                                                </select><span class="highlight"></span> <span class="bar"></span>
-                                                <label for="input6">Privacy</label>
-                                            </div>
-                                            </div>                           
-                                        <input type="submit" class="btn btn-block btn-outline btn-rounded btn-info" name="update" value="Update">
-                                    </div>
+                                            <input type="text" hidden name="diary_id" value="<?php echo $stor['diary_id']; ?>">
+                                                <div class="col-md-12">                                            
+                                                    <input type="text" class="btn btn-block btn-rounded" value="<?php echo $stor['story_title']; ?>" name="title" id="pardate">
+                                                </div> <br/><br/><br><br>
+                                                <div class="floating-labels ">
+                                                <div class="col-md-12 form-group">
+                                                    <input class="form-control" type="date" name = "date" value="<?php echo $stor['story_date']; ?>"><span class="highlight"></span> <span class="bar"></span>
+                                                </div>                                          
+                                                <div class="col-md-12 form-group">
+                                                    <textarea class="form-control" name="content" id="content" cols="30" rows="10"><?php echo $stor['story_content']; ?></textarea>
+                                                </div>
+                                                </div>                           
+                                            <input type="submit" class="btn btn-block btn-outline btn-rounded btn-info" name="update" value="Update">
+                                        </div>
                                 </form>
                             </div>
                         </div>
@@ -154,12 +149,6 @@
     <!--BlockUI Script -->
     <script src="components/plugins/bower_components/blockUI/jquery.blockUI.js"></script>
     <script type="application/javascript">
-    $("#edit").click(function(){
-        $("#title").prop("readOnly", false);
-        $("#status").prop("disabled", false);
-        $("#save").prop("hidden",false);
-        $("#edit").prop("hidden", true);
-    });
    
     </script>
     <!--Style Switcher -->
@@ -167,7 +156,8 @@
 </body>
 </html>
 <?php
-    }else{
-        header("location:pleaselogin.php");
-    }
+
+} else {
+    header("location:pleaselogin.php");
+}
 ?>

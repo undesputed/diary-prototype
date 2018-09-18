@@ -1,9 +1,8 @@
 <?php
     include '../model/storyModel.php';
-
     if($_SESSION){
         $story = new Story();
-        $stor = $story->getStory($_GET['id'])
+        $stor = $story->getStory($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,11 +134,11 @@
                         <?php foreach($stor as $s) {?>
                     <?php if($s['diary_id'] == $_GET['id']) {?>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="panel panel-default">                
-                                <form method="post" action="">                
+                            <div class="panel panel-default">                     
                                 <div class="panel-heading col-md-12 form-group">
                                     <label calss="control-label">Title:</label>  
                                     <input class="form-control" type="text" value="<?php echo $s['story_title'];?>" name="storytitle" id="title" readOnly>
+                                    <input type="text" hidden name="diary_id" value="<?php echo $_GET['id'];?>">
                                 </div>
                                 <div class="panel-wrapper collapse in">
                                     <div class="panel-body">
@@ -151,13 +150,10 @@
                                             <label class="control-label">Content:</label>
                                             <textarea readOnly class="form-control" name="content" id="contents" cols="30" rows="10"><?php echo $s['story_content'];?></textarea>
                                         </div>
-                                        <a class="btn btn-info m-t-12" id="edit">Edit</a> 
-                                        <input type="submit" name="save" value="Save" hidden class="btn btn-info m-t-12" id="saved"> 
-                                        <a class="btn btn-info m-t-12" id="cancel" hidden>Cancel</a> 
+                                        <a href="estories.php?id=<?php echo $s['story_id'];?>" type="submit" name="update" value="update" class="btn btn-info m-t-12" id="saved">Update</a>
                                         <a href="../controller/Story/deleteStory.php?id=<?php echo $s['story_id'];?>" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i></a>
                                         <a href="" class="btn btn-default" id="like"> <i class="fa fa-heart"></i></a>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

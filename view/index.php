@@ -1,8 +1,6 @@
 <?php
 include '../model/ownerModel.php';
-
 if($_SESSION){
-
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +51,7 @@ if($_SESSION){
                 <div class="sidebar-nav navbar-collapse slimscrollsidebar">
                     <div class="user-profile">
                         <div class="dropdown user-pro-body">
-                            <div><img src="components/plugins/img/profilelogo.png" alt="user-img" class="img-circle"></div> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['owner']?><span class="caret"></span></a>
+                            <div><img src="components/plugins/img/profilelogo.png" alt="user-img" class="img-circle"></div> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['owner'];?><span class="caret"></span></a>
                             <ul class="dropdown-menu animated flipInY">
                                 <li><a href="profile.php"><i class="ti-user"></i> My Profile</a></li>
                                 <li role="separator" class="divider"></li>
@@ -146,7 +144,6 @@ if($_SESSION){
     $(".view").click(function (){
         $("#acceptprivacy").val($("#status").val());
     });
-
     $("#edit").click(function(){
         $("#save").prop("hidden",false);
         $("#accepttitle").prop("disabled", false);
@@ -168,7 +165,6 @@ if($_SESSION){
                 else{
                     alert("All Fields Are Required");
                 }
-
     });
     $("#save").click(function(){
         var content=$("#content").val();

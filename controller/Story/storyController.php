@@ -16,4 +16,16 @@
         }else{
             echo 'shit hsith ihst';
         }
+        
+    }
+
+    if(isset($_POST['update']))
+    {
+        $diary_id = $_POST['diary_id'];
+        $owner_id = $_SESSION['owner_id'];
+        $date=$_POST['date'];
+        $content = $_POST['content'];
+        $title=$_POST['title'];
+        $story->updateStory(array($diary_id,$date,$owner_id,$title,$content),$_GET['id']);
+        header('location:../../view/diary.php');
     }

@@ -82,15 +82,26 @@ function getRecord($table,$field_id,$ref_id){
 }
 // Update
 function updateRecord($table,$fields,$data,$field_id,$ref_id){
-            $ok;
-            $flds=implode("=?,",$fields)."=?";
-            $sql="UPDATE $table SET $flds WHERE $field_id=$ref_id";
-            try{
-                $stmt=$this->conn->prepare($sql);
-                $ok=$stmt->execute($data);
-            }catch(PDOException $e){ echo $e->getMessage();}
-            return $ok;
-        }
+    $ok;
+    $flds=implode("=?,",$fields)."=?";
+    $sql="UPDATE $table SET $flds WHERE $field_id=$ref_id";
+    try{
+        $stmt=$this->conn->prepare($sql);
+        $ok=$stmt->execute($data);
+    }catch(PDOException $e){ echo $e->getMessage();}
+    return $ok;
+}
+function updateRecord2($table,$fields,$data,$field_id,$ref_id,$field_id2,$ref_id2){
+    $ok;
+    $flds=implode("=?,",$fields)."=?";
+    $sql="UPDATE $table SET $flds WHERE $field_id=$field_id2 and $ref_id=$ref_id2";
+    try{
+        $stmt=$this->conn->prepare($sql);
+        $ok=$stmt->execute($data);
+    }catch(PDOException $e){ echo $e->getMessage();}
+    return $ok;
+}
+ 
 // Delete
 function deleteRecord($table,$field_id,$ref_id){
     $ok;

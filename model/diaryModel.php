@@ -29,8 +29,11 @@
         return DBHelper::getRecord($this->table,'owner_id',$ref_id);
     }
     // Update
-    function updateDiary($data,$ref_id){
-        return DBHelper::updateRecord($this->table,$this->fields,$data,'diary_id',$ref_id); 
+    function updateDiary1($data,$ref_id){
+        return DBHelper::updateRecord($this->table,$this->fields,$data,'owner_id',$ref_id); 
+    }
+    function updateDiary($data,$ref_id,$ref_id){
+        return DBHelper::updateRecord2($this->table,$this->fields,$data,'owner_id',$ref_id,'diary_id',$ref_id2); 
     }
     // Delete
     function deleteDiary($ref_id){

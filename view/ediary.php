@@ -5,7 +5,7 @@
         date_default_timezone_set("Asia/Manila");
         $date=date("Y-m-d");
         $diary = new Diary();
-        $dia=$diary->getDiary($_SESSION['owner_id']);
+        $dia=$diary->getDiaryById($_GET['id']);
 // print_r($dia);
     
 ?>
@@ -106,20 +106,26 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="white-box">
-                                <form action="" class="form-horizontal form-bordered" method="post">
+                                <form action="../controller/diary/diaryController.php" class="form-horizontal form-bordered" method="post">
                                     <div class="form-body">
                                         <input type="number" name="diary_id" hidden value="<?php echo $_GET['id'];?>">
-                                        <div class="col-md-12 form-group">
-                                            <input class="form-control" required value="<?php foreach($dia as $d){ echo $d['diary_datecreated'];?>" type="date" name = "date"><span class="highlight"></span> <span class="bar"></span>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <input class="form-control" required type="text" placeholder="Title" name="title">
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="control-label">Content:</label>
-                                            <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
-                                        </div>
-                                        <input type="submit" class="btn btn-block btn-outline btn-rounded btn-info" name="AddStory" value="Add Story">
+                                            <div class="col-md-12">                                            
+                                                <input readOnly class="btn btn-block btn-rounded btn-danger" value="<?php echo $dia['diary_datecreated'];?>" name="date" id="pardate">
+                                            </div> <br/><br/><br><br>
+                                            <div class="floating-labels ">
+                                            <div class="form-group m-b-40">
+                                                <input name="label" type="text" class="form-control" id="titlediary"><span class="highlight"></span> <span class="bar"></span>
+                                                <label for="input1"><?php echo $dia['diary_label'];?></label>
+                                            </div>                                            
+                                            <div class="form-group m-b-40 ">
+                                                <select name="status" value="<?php echo $dia['diary_status'];?>" class="form-control p-0" id="privacy" required>
+                                                    <option value="Active">Active</option>
+                                                    <option value="Forgotten">Forgotten</option>
+                                                </select><span class="highlight"></span> <span class="bar"></span>
+                                                <label for="input6">Privacy</label>
+                                            </div>
+                                            </div>                           
+                                        <input type="submit" class="btn btn-block btn-outline btn-rounded btn-info" name="update" value="Update">
                                     </div>
                                 </form>
                             </div>

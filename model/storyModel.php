@@ -26,7 +26,7 @@
         return DBHelper::getRecordById($this->table,'story_id',$ref_id);
     }
     function getStory($ref_id){
-        return DBHelper::getRecord($this->table,'story_id',$ref_id);
+        return DBHelper::getRecord($this->table,'diary_id',$ref_id);
     }
     // Update
     function updateStory($data,$ref_id){

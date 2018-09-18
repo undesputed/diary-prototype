@@ -27,4 +27,18 @@ $owner=new Owner();
         }
         header('location:../../index.php');
     }
+
+    if(isset($_POST['update']))
+    {
+        $flag=true;
+        $owner_id=$_SESSION['owner_id'];
+        $lastname=$_POST['lastname'];
+        $firstname=$_POST['firstname'];
+        $mi=$_POST['mi'];
+        $email=$_POST['email'];
+        $password=$_POST['password'];    
+
+            $owner->updateOwner(array($lastname,$firstname,$mi,$email,$password,$owner_id),$owner_id);
+            header('location:../../view/diary.php');
+    }
 ?>

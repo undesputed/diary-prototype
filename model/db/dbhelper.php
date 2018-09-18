@@ -62,17 +62,17 @@ function getAllRecord($table){
     function getRecordById($table,$field_id,$ref_id){
         $sql = "SELECT * FROM $table WHERE $field_id = ?";
         try{
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(array($ref_id));
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    }catch(PDOException $e){ echo $e->getMessage();}
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(array($ref_id));
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        }catch(PDOException $e){ echo $e->getMessage();}
         return $row;
        // $this->conn = null;
     }
     //---
 function getRecord($table,$field_id,$ref_id){
     $row;
-    $sql="SELECT * FROM $table WHERE $field_id=?";
+    $sql="SELECT * FROM $table WHERE $field_id = ?";
     try{
         $stmt=$this->conn->prepare($sql);
         $stmt->execute(array($ref_id));

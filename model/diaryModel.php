@@ -3,8 +3,7 @@
 
     Class Diary extends DBHelper{
         private $table = "diary";
-        private $fields = array(
-        
+        private $fields = array(        
             "owner_id",
             "diary_datecreated",
             "diary_label",
@@ -27,7 +26,7 @@
         return DBHelper::getRecordById($this->table,'diary_id',$ref_id);
     }
     function getDiary($ref_id){
-        return DBHelper::getRecord($this->table,'diary_id',$ref_id);
+        return DBHelper::getRecord($this->table,'owner_id',$ref_id);
     }
     // Update
     function updateDiary($data,$ref_id){

@@ -18,4 +18,14 @@
         }
     }
 
+    if(isset($_POST['update']))
+    {
+        $id=$_SESSION['owner_id'];
+        $date = htmlentities($_POST['up_date']);
+        $label= htmlentities($_POST['up_label']);
+        $status = htmlentities($_POST['up_status']);
+        $ok = $diary->updateDiary(array($id,$date,$label,$status),$id);
+        header("location:../../view/diary.php?Update_Success");
+    }
+
 ?>

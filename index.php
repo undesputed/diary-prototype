@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>Register Diary</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="view/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="view/components/plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="view/components/css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="view/components/css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="view/components/css/colors/default.css" id="theme" rel="stylesheet">
     <title>Welcome to My Diary</title>
 </head>
 <body>
+<div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
 <section id="wrapper" class="login-register">
   <div class="login-box login-sidebar">
     <div class="white-box">
@@ -52,15 +66,29 @@
           </div>
         </div>
         </form>
+        <div class="form-group m-b-0">
+                <div class="col-sm-12 text-center">
+                  <p>Already have an account? <a href="view/login.php" class="text-primary m-l-5"><b>Sign In</b></a></p>
+                </div>
+        </div>
     </div>
   </div>
-  <div>
-    <form action="controller/Owner/ownerLog.php" method="post">
-        <input type="email" name="email" id="email" placeholder="email">
-        <input type="password" name="password" id="password" placeholder="password">
-        <input type="submit" value="Login" name="login">
-    </form>
-  </div>
 </section>
+<!-- jQuery -->
+<script src="view/components/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="view/components/bootstrap/dist/js/tether.min.js"></script>
+    <script src="view/components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="view/components/plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="view/components/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="view/components/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="view/components/js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="view/components/js/custom.min.js"></script>
+    <!--Style Switcher -->
+    <script src="view/components/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 </html>

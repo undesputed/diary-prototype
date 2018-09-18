@@ -25,7 +25,7 @@ $owner=new Owner();
         else{
             $message = "Invalid Credentials";
         }
-        header('location:../../index.php');
+        header('location:../../view/index.php');
     }
 
     if(isset($_POST['update']))

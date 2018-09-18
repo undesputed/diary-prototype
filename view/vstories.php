@@ -136,22 +136,22 @@
                     <?php if($s['diary_id'] == $_GET['id']) {?>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="panel panel-default">
-                                <div class="panel-heading"><?php echo $s['story_title'];?>
-                                    <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
+                                <div class="panel-heading"><input class="form-control" type="text" value="<?php echo $s['story_title'];?>" name="storytitle" id="title" readOnly>
                                 </div>
                                 <div class="panel-wrapper collapse in">
                                     <div class="panel-body">
                                         <div class="col-md-12 form-group">
                                             <label class="control-label">Date:</label>
-                                            <input readOnly value="<?php echo $s['story_date'];?>" class="form-control" required type="date" name = "date"><span class="highlight"></span> <span class="bar"></span>
+                                            <input readOnly value="<?php echo $s['story_date'];?>" class="form-control" id="date" required type="date" name = "date"><span class="highlight"></span> <span class="bar"></span>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">Content:</label>
-                                            <textarea readOnly class="form-control" name="content" id="content" cols="30" rows="10"><?php echo $s['story_content'];?></textarea>
+                                            <textarea readOnly class="form-control" name="content" id="contents" cols="30" rows="10"><?php echo $s['story_content'];?></textarea>
                                         </div>
                                         <a class="btn btn-info m-t-12" id="edit">Edit</a> 
+                                        <a class="btn btn-info m-t-12" id="cancel" hidden>Cancel</a> 
                                         <a href="../controller/Story/deleteStory.php?id=<?php echo $s['story_id'];?>" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i></a>
-                                        <a href="" class="btn btn-default" id="delete"> <i class="fa fa-heart"></i></a>
+                                        <a href="" class="btn btn-default" id="like"> <i class="fa fa-heart"></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -186,6 +186,26 @@
     <!--BlockUI Script -->
     <script src="components/plugins/bower_components/blockUI/jquery.blockUI.js"></script>
     <script src="assets/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+    <script type="text/javascript">
+        $("#edit").click(function(){
+            $("#date").prop("readOnly",false);
+            $("#contents").prop("readOnly",false);
+            $("#title").prop("readOnly", false);
+            $("#delete").prop("hidden", true);
+            $("#cancel").prop("hidden", false);
+            $("#like").prop("hidden", true);
+            $("#edit").html("Update");
+        });
+        $("#cancel").click(function(){
+            $("#edit").html("edit");
+            $("#date").prop("readOnly",true);
+            $("#contents").prop("readOnly",true);
+            $("#title").prop("readOnly", true);
+            $("#delete").prop("hidden", false);
+            $("#cancel").prop("hidden", true);
+            $("#like").prop("hidden", false);
+        });
+    </script>
 </body>
 </html>
 

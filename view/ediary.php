@@ -103,75 +103,25 @@
                         </div>
                         <!-- /.breadcrumb -->
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">Add Diary
-                                <div class="panel-action"></div>
-                            </div>
-                            <div class="panel-wrapper collapse in">
-                                <div class="panel-body">
-                                <div class="form-group">          
-                                    <form action="../controller/Diary/diaryController.php" method="post">   
-                                            <input type="text" hidden name="ownerid" value="">       
-                                            <div class="col-md-12">
-                                                <input readOnly class="btn btn-block btn-rounded btn-danger" value="<?php echo $date;?>" name="date" id="pardate">
-                                            </div> <br/><br/><br><br>
-                                            <div class="floating-labels ">
-                                            <div class="form-group m-b-40">
-                                                <input name="label" type="text" class="form-control" id="titlediary" required><span class="highlight"></span> <span class="bar"></span>
-                                                <label for="input1">Title</label>
-                                            </div>                                            
-                                            <div class="form-group m-b-40 ">
-                                                <select name="status" class="form-control p-0" id="privacy" required>
-                                                    <option value="Active">Active</option>
-                                                    <option value="Forgotten">Forgotten</option>
-                                                </select><span class="highlight"></span> <span class="bar"></span>
-                                                <label for="input6">Privacy</label>
-                                            </div>
-                                            </div>                                         
-                                            <input type="submit" name="createDia" id="add" class="btn btn-info m-t-10 btn-block btn-info btn-rounded model_img img-responsive"  alt="default" value="Create">                                            
-                                    </div> 
-                                    </form>                           
-                                </div>
-                                <div class="panel-footer panel-info"></div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="white-box">
-                                <table class="table">
-                                    <thead>
-                                        <th>ID</th>
-                                        <th>Date</th>
-                                        <th>Title</th>
-                                        <td>Status</th>
-                                        <td>Action</th>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach($dia as $d){?>
-                                        <tr>
-                                            <td><?php echo $d['diary_id'];?></td>
-                                            <td><?php echo $d['diary_datecreated'];?></td>
-                                            <td><?php echo $d['diary_label'];?></td>
-                                            <td><?php echo $d['diary_status'];?></td>
-                                            <td>
-                                                <a href="ediary.php?id=<?php echo $d['diary_id'];?>" class="btn hover btn-outline-info"><i class="fa fa-pencil"></i></a>
-                                                <?php if($d['diary_status'] == 'Active') {?>
-                                                <a href="vstories.php?id=<?php echo $d['diary_id'];?>" class="btn hover btn-outline-info"><i class="fa fa-eye"></i></a>
-                                                <a href="../controller/Diary/deleteDiary.php?id=<?php echo $d['diary_id'];?>" class="btn hover btn-outline-info"><i class="fa fa-trash"></i></a>
-                                                <?php
-                                                }
-                                                    else if($d['diary_status'] == 'forgotten'){
-                                                ?>
-                                                --
-                                                --
-                                                    <?php }?>
-                                            </td>
-                                        </tr>
-                                        <?php }?>
-                                    </tbody>
-                                </table>
+                                <form action="" class="form-horizontal form-bordered" method="post">
+                                    <div class="form-body">
+                                        <input type="number" name="diary_id" hidden value="<?php echo $_GET['id'];?>">
+                                        <div class="col-md-12 form-group">
+                                            <input class="form-control" required value="<?php foreach($dia as $d){ echo $d['diary_datecreated'];?>" type="date" name = "date"><span class="highlight"></span> <span class="bar"></span>
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <input class="form-control" required type="text" placeholder="Title" name="title">
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <label class="control-label">Content:</label>
+                                            <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+                                        </div>
+                                        <input type="submit" class="btn btn-block btn-outline btn-rounded btn-info" name="AddStory" value="Add Story">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
